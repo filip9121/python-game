@@ -4,11 +4,11 @@ import sys
 
 pygame.init()
 
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 800, 600 #res
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Trailblazer")
+pygame.display.set_caption("Trailblazer") #shows name 
 
-#colors
+#Colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
@@ -16,7 +16,7 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
 clock = pygame.time.Clock()
-FPS = 60
+FPS = 60 #change later!!
 
 # Player Settings
 player_size = 40
@@ -25,7 +25,7 @@ player_y = HEIGHT - 60
 player_speed = 5
 player_rect = pygame.Rect(player_x, player_y, player_size, player_size)
 
-# Enemy Settings
+#enemy
 enemy_size = 40
 enemy_speed = 3
 enemy_list = []
@@ -34,13 +34,13 @@ enemy_list = []
 token_size = 30
 token_list = []
 
-# Game Variables
+# Variables ig
 score = 0
 lives = 3
 game_over = False
 
-# Fonts
-font = pygame.font.Font(None, 36)
+# Font
+font = pygame.font.Font(None, 30)
 
 # Functions
 def create_enemy():
@@ -57,9 +57,9 @@ def draw_text(text, x, y, color=WHITE):
     surface = font.render(text, True, color)
     screen.blit(surface, (x, y))
 
-# Main Game Loop
+# Game Loop
 while True:
-    # Handle Events
+    # Event handler
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -111,14 +111,14 @@ while True:
     for token in token_list:
         pygame.draw.rect(screen, GREEN, token)
 
-    # Display Score and Lives
+   
     draw_text(f"Score: {score}", 10, 10)
     draw_text(f"Lives: {lives}", 10, 50)
 
     if game_over:
         draw_text("Game Over! Press R to Restart", WIDTH // 2 - 150, HEIGHT // 2, RED)
 
-    # Restart Game
+
     if game_over and pygame.key.get_pressed()[pygame.K_r]:
         score = 0
         lives = 3
